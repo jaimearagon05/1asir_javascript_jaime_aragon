@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<script>
+//============Funciones==============
+function Media (tab_sueldo) {
+	var suma=0;
+for(const x in tab_sueldo){
+	if (x >0) {
+		suma = suma+ tab_sueldo[x];
+}
+}
+var media=suma / (tab_sueldo.length);
+return(media);
+}
+function Proceso (mat_sueldo){
+	tab=[];
+ for(const x in mat_sueldo){
+ 	tab.push(Media(mat_sueldo[x]));
+ } 
+ return tab;
+}
+function Visualizar (tab_result){
+	document.write("Las medias son: <br>");
+	for (const x in tab_resul){
+		document.write(tab_resul[x] + " ");
+	}
+}
+
+//================Programa principal====================
+
+mat_sueldo= [
+	[1000, 2500, 800, 2000],
+	[2000, 2300, 1800, 200],
+	[1500, 1000, 2400, 3000],
+	[1200, 2200, 1800, 4000],
+	[3400, 5200, 1200, 3500]
+	];
+tab_resul = Proceso(mat_sueldo);
+Visualizar (tab_resul);
+</script>
+</body>
+</html>
