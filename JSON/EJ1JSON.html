@@ -1,0 +1,29 @@
+//declarar dos arrays. Uno con los nombres de empleados y otro con los suelds correspondientes.
+//Se pide que se muestre en pantalla el empleaado que tenga el sueldo mas alto
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empleado con Mayor Sueldo</title>
+</head>
+<body>
+    <script>
+        var empleados = ["Conchi", "Tomas", "Turbado", "Jacinta"];
+
+        var sueldos = [1200, 2100, 1800, 2101];
+
+        var elindiceSueldoMasAlto = 0;
+        for (var i = 1; i < sueldos.length; i++) {
+            if (sueldos[i] > sueldos[elindiceSueldoMasAlto]) {
+                elindiceSueldoMasAlto = i;
+            }
+        }
+
+        var empleadoSueldoMasAlto = empleados[elindiceSueldoMasAlto];
+        var sueldoMasAlto = sueldos[elindiceSueldoMasAlto];
+
+        alert("El empleado con el sueldo más alto es: " + empleadoSueldoMasAlto + " con un sueldo de $" + sueldoMasAlto);
+    </script>
+</body>
+</html>

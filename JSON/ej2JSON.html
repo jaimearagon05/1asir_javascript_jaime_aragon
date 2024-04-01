@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notas de Alumnos</title>
+</head>
+<body>
+<script>
+let text = '{"inmoviliaria":[ ' +
+'{ "nombre": "Luis Ortiz", "notas1": "6", "notas2": "4", "notas3":"7", "notas4": "6" , "notas5": "7"}, ' +
+'{ "nombre": "Ana Torres", "notas1": "7", "notas2": "5", "notas3":"5", "notas4": "8" , "notas5": "9"}, ' +
+'{ "nombre": "Roberto Martinez", "notas1": "3", "notas2": "2", "notas3":"4", "notas4": "4" , "notas5": "6"}, ' +
+'{ "nombre": "Laura Moreno", "notas1": "5", "notas2": "4", "notas3":"3", "notas4": "4" , "notas5": "8"} ]}';
+
+let obj = JSON.parse(text);
+
+function calcularNotaMedia(estudiante) {
+  let suma = 0;
+  for (let i = 1; i <= 5; i++) {
+    suma += parseInt(estudiante['notas' + i]);
+  }
+  return suma / 5;
+}
+
+function filtrarYMostrarSuspensos() {
+  let suspensos = obj.inmoviliaria.filter(function(estudiante) {
+    return calcularNotaMedia(estudiante) < 5;
+  });
+
+  document.write("Alumnos con nota media suspensa: <br>");
+  suspensos.forEach(function(estudiante) {
+    document.write(estudiante.nombre + ' - Nota media: ' + calcularNotaMedia(estudiante) + "<br>");
+  });
+}
+
+function filtrarYMostrarDosSuspensos() {
+  let dosSuspensos = obj.inmoviliaria.filter(function(estudiante) {
+    let suspensos = 0;
+    for (let i = 1; i <= 5; i++) {
+      if (parseInt(estudiante['notas' + i]) < 5) {
+        suspensos++;
+      }
+    }
+    return suspensos > 2;
+  });
+
+  document.write("Alumnos con más de dos suspensos: <br>");
+  dosSuspensos.forEach(function(estudiante) {
+    document.write(estudiante.nombre + "<br>");
+  });
+}
+
+filtrarYMostrarSuspensos();
+filtrarYMostrarDosSuspensos();
+</script>
+</body>
+</html>
